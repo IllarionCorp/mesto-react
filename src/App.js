@@ -13,11 +13,11 @@ function App() {
   <div id="profile" class="popup">
    <div class="popup__container">
       <button type="button" class="popup__close-button">
-       <img id="profile-closed" src="<%=require('./images/Close_Icon.svg')%>" class="popup__close-icon" alt="крестик для закрытия диалогового окна">
+       <img id="profile-closed" src="<%=require('./images/Close_Icon.svg')%>" class="popup__close-icon" alt="крестик для закрытия диалогового окна" />
       </button>
       <h2 class="popup__description">Редактировать профиль</h2>
-      <form id="profile-edite" name="profile-fields" class="fields" novalidate>
-        <input name="name" type="text" id="name" class="fields__input" minlength="2" maxlength="40" required>
+      <form id="profile-edite" name="profile-fields" class="fields" novalidate />
+        <input name="name" type="text" id="name" class="fields__input" minlength="2" maxlength="40" required />
         <span id="name-error" class="fields__input-error"></span>
         <input name="about" type="text" id="about" class="fields__input" minlength="2" maxlength="200" required>
         <span id="about-error" class="fields__input-error"></span>
