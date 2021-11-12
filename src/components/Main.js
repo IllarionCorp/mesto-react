@@ -13,12 +13,14 @@ export default function Main() {
  React.useEffect(() => {
   api.getUserInfo()
   .then(res => {
+   console.log(res);
    setUserName(res.name);
+   setUserAvatar(res.avatar);
+   setUserDescription(res.about);
+  })
+  .catch(err => alert("Смэрт профиля" + err));
  });
 
-
-
- });
 
  console.log(userName);
 
@@ -41,11 +43,11 @@ export default function Main() {
       <main className="content">
           <section className="profile">
            <div className="profile__avatar">
-            <button type="button" className="profile__button-edite-avatar" onClick={handleEditAvatarClick}></button>
+            <button type="button" className="profile__button-edite-avatar" onClick={handleEditAvatarClick} style={{backgroundUrl: `url(${userAvatar}`}}></button>
            </div>
             <div className="profile__info">
               <h1 className="profile__nickname">{userName}</h1>
-              <p className="profile__profession"></p>
+              <p className="profile__profession">{userDescription}</p>
               <button type="button" className="profile__button-edite" onClick={handleEditProfileClick}>
                   <img src={pen} className="profile__image-edite" alt="Картинка с ручкой для окна редактирования профиля" />
               </button>
