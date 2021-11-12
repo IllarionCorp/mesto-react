@@ -1,7 +1,7 @@
 import Close_Icon from '../images/Close_Icon.svg';
 
 export default function PopupWithForm(props) {
- console.log(props.id);
+
  return (
       <>
        <div id={props.id} className="popup">

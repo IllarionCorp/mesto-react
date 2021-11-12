@@ -6,20 +6,21 @@ import { api } from '../utils/Api';
 export default function Main() {
 
  const open = 'popup_opened';
- const [userName, setUserName] = React.useState();
+ const [userName, setUserName] = React.useState('');
  const [userDescription, setUserDescription] = React.useState();
  const [userAvatar, setUserAvatar] = React.useState();
 
  React.useEffect(() => {
-  const userInfo = api.getUserInfo();
-
-  setUserName(
-   userInfo
-     .then(res => {
-       console.log(res.name);
-       return res.name;
-     }));
+  api.getUserInfo()
+  .then(res => {
+   setUserName(res.name);
  });
+
+
+
+ });
+
+ console.log(userName);
 
 
  function handleEditAvatarClick() {
