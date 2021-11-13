@@ -10,7 +10,7 @@ export default function PopupWithForm(props) {
              <img id="profile-closed" src={Close_Icon} className="popup__close-icon" alt="крестик для закрытия диалогового окна" />
             </button>
             <h2 className="popup__description">Редактировать профиль</h2>
-            <form id={props.id + 'edite'} name="profile-fields" className="fields" noValidate>
+            <form id={props.id + '-edite'} name="profile-fields" className="fields" noValidate>
               <input name="name" type="text" id="name" className="fields__input" minLength="2" maxLength="40" required />
               <span id="name-error" className="fields__input-error"></span>
               <input name="about" type="text" id="about" className="fields__input" minLength="2" maxLength="200" required />

@@ -1,6 +1,6 @@
 import Close_Icon from '../images/Close_Icon.svg';
-import Trash from '../images/Trash.svg';
 import '../index.css';
+import Cards from './Cards';
 import Footer from './Footer';
 import Header from './Header.js';
 import Main from './Main';
@@ -8,10 +8,25 @@ import PopupWithForm from './PopupWithForm';
 
 
 function App() {
+
+  export function handleEditAvatarClick() {
+    document.querySelector('#avatar-update').classList.add(open);
+   }
+  
+   export function handleEditProfileClick() {
+    // document.querySelector('#profile').classList.add(open)
+    console.log(document.querySelector('#profile'));
+   }
+  
+   export function handleAddPlaceClick() {
+    // document.querySelector('#add').classList.add(open);
+    console.log(document.querySelector('#add'));
+    }
+
  return (
  <>
-   <body className="page">
     <PopupWithForm id="#profile" />
+    <PopupWithForm id="#add" />
         {/* <div id="profile" className="popup">
          <div className="popup__container">
             <button type="button" className="popup__close-button">
@@ -85,23 +100,7 @@ function App() {
          </div>
         <Header />
         <Main />
-        <template id="card-template">
-         <div className="element">
-          <img src="." className="element__image" alt="Пользовательское изображение" />
-          <button id="" type="button" className="element__trash">
-           <img src={Trash} className="element__trash-image"  alt="Иконка для удаления карточки" />
-          </button>
-          <div className="element__footer">
-            <h2 className="element__place-name"></h2>
-            <div className="element__like-container">
-             <button type="button" className="element__like"></button>
-             <p className="element__like-counter">0</p>
-            </div>
-          </div>
-         </div>
-        </template>
        <Footer />
-    </body>
   </>
  );
 }
