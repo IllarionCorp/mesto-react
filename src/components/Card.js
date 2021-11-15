@@ -2,7 +2,7 @@ import React from "react";
 import Trash from '../images/Trash.svg';
 
 
-export default function Cards(props) {
+export default function Card(props) {
 
  function handleClick() {
   props.onCardClick(props.card);

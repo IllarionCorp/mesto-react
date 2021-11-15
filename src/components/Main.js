@@ -2,7 +2,7 @@ import React from 'react';
 import pen from '../images/pen.svg';
 import Vector from '../images/Vector.svg';
 import { api } from '../utils/Api';
-import Cards from './Cards';
+import Card from './Card';
 
 
 export default function Main(props) {
@@ -42,7 +42,7 @@ export default function Main(props) {
             </button>
           </section>
           <section className="elements"> {cards.map((data, i) =>
-          <Cards key={i} card={data} onCardClick={props.onCardClick}/>
+          <Card key={i} card={data} onCardClick={props.onCardClick}/>
         )}</section>
         </main>
      </>
