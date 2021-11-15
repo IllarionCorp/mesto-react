@@ -17,4 +17,3 @@ const closeClickToEsc = (event) => {
   }
 }
 
-export { openPopup, closePopup };
