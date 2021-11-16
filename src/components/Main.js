@@ -1,7 +1,7 @@
 import React from 'react';
 import pen from '../images/pen.svg';
 import Vector from '../images/Vector.svg';
-import { api } from '../utils/api';
+import api from '../utils/api';
 import Card from './Card';
 
 
