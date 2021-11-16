@@ -1,8 +1,8 @@
 .element__trash-image {
-    width: 18px;
-    height: 20px;
+  width: 18px;
+  height: 20px;
 }
 
 .element__trash-image:hover {
-    opacity: 0.6;
+  opacity: 0.6;
 }
