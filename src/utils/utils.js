@@ -12,8 +12,8 @@ const closePopup = (element) => {
 
 const closeClickToEsc = (event) => {
   if (event.key === ECS_CODE) {
-   const openedPopup = document.querySelector('.popup_opened');
-   closePopup(openedPopup);
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
   }
 }
 
