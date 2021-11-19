@@ -41,8 +41,8 @@ export default function Main(props) {
             <img src={Vector} className="profile__image-add" alt="Картинка с плюсиком" />
           </button>
         </section>
-        <section className="elements"> {cards.map((data, i) =>
-          <Card key={i} card={data} onCardClick={props.onCardClick} />
+        <section className="elements"> {cards.map((data) =>
+          <Card key={data._id} card={data} onCardClick={props.onCardClick} />
         )}</section>
       </main>
     </>
