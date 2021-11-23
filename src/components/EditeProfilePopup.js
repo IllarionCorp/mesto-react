@@ -20,7 +20,7 @@ export default function EditeProfilePopup(props) {
     if(props.isOpen === true) {
       handleChange(currentUser);
     }
-  }, [currentUser]);
+  }, [props.isOpen, currentUser]);
 
   console.log(name);
   return (
