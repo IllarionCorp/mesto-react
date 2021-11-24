@@ -5,6 +5,7 @@ import Header from './Header.js';
 import ImagePopup from './ImagePopup';
 import Main from './Main';
 import PopupWithForm from './PopupWithForm';
+import currentUserContext from '../contexts/CurrentUserContext';
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState({ cardInfo: {}, open: false });
+  const [currentUser, setCurrentUser] = React.useState({});
 
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
