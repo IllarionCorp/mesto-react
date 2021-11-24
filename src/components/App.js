@@ -8,6 +8,8 @@ import Main from './Main';
 import PopupWithForm from './PopupWithForm';
 import { CurrentUserContext } from '../cotexts/CurrentUserContext';
 import EditeProfilePopup from './EditeProfilePopup';
+import EditeAvatarPopup from './EditeAvatarPopup';
+import AddPlacePopup from './AddPlacePopup';
 
 
 function App() {
@@ -50,9 +52,9 @@ function App() {
     if (isLiked === false) {
       api.putMyLike(card._id).then((newCard) => {
         setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
-      }).catch(err => alert("Cмэрт постановки лайка: "  + err));
+      }).catch(err => alert("Cмэрт постановки лайка: " + err));
     } else {
-      api.deleteMyLike(card._id).then((newCard) =>{
+      api.deleteMyLike(card._id).then((newCard) => {
         setCards((state) => state.map(c => c._id === card._id ? newCard : c));
       }).catch(err => alert("Смэрт снятия лайка: " + err));
     }
@@ -60,6 +62,35 @@ function App() {
 
   function handleCardDelete(card) {
     api.deleteCard(card._id).then(setCards(list => list.filter(c => c._id !== card._id && c))).catch(err => alert("Смэрт удаления карточки: " + err));
+  }
+
+  function handleUpdateUser(data) {
+    api.patchUserInfo(data)
+      .then(newInfo => {
+        setCurrentUser(newInfo);
+      }).catch(err => alert("Смэрт обновления профиля: " + err));
+
+    closeAllPopups();
+  }
+
+  function handleUpdateAvatar(data) {
+    api.patchAvatar(data)
+      .then(newInfo => {
+        setCurrentUser(newInfo);
+      })
+      .catch(err => alert("Смэрт обновления аватара: " + err));
+
+    closeAllPopups();
+  }
+
+  function handleAddCard(data) {
+    api.postNewCards(data)
+      .then(newCard => {
+        setCards([newCard, ...cards]);
+      })
+      .catch(err => alert("Смэрт новой карточки: " + err));
+
+    closeAllPopups();
   }
 
 
@@ -73,17 +104,9 @@ function App() {
   return (
     <>
       <CurrentUserContext.Provider value={currentUser}>
-        <EditeProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} />
-        <PopupWithForm id="#add" name="Новое место" isOpen={isAddPlacePopupOpen} onClose={closeAllPopups}>
-          <input name="title" type="text" id="title" className="fields__input" placeholder="Название" minLength="2" maxLength="30" required />
-          <span id="title-error" className="fields__input-error"></span>
-          <input name="link" type="url" id="link" className="fields__input" required placeholder="Ссылка на картинку" />
-          <span id="link-error" className="fields__input-error"></span>
-        </PopupWithForm>
-        <PopupWithForm id="avatar-update" name="Обновить аватар" isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups}>
-          <input name="avatar" type="url" id="avatar" className="fields__input" placeholder="Ссылка на картинку" required />
-          <span id="avatar-error" className="fields__input-error"></span>
-        </PopupWithForm>
+        <EditeProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} />
+        <EditeAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} />
+        <AddPlacePopup  isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddPlace={handleAddCard} />
         <PopupWithForm id="delete-card" name="Вы уверены?" />
         <ImagePopup card={selectedCard} onClose={closeAllPopups} />
         {/* <div id="delete-card" className="popup">
@@ -101,7 +124,7 @@ function App() {
         </div> */}
         <Header />
         <Main cards={cards} onEditAvatar={handleEditAvatarClick} onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onCardClick={handleCardClick} onCardLike={handleCardLike}
-        onCardDelete={handleCardDelete} />
+          onCardDelete={handleCardDelete} />
         <Footer />
       </CurrentUserContext.Provider>
     </>
