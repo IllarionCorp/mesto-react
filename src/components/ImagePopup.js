@@ -1,4 +1,4 @@
-import Close_Icon from '../images/Close_Icon.svg';
+import closeIcon from '../images/Close_Icon.svg';
 
 export default function ImagePopup(props) {
 
@@ -7,7 +7,7 @@ export default function ImagePopup(props) {
       <div className="popup__cont-img">
         <button type="button" className="popup__close-button" onClick={props.onClose}>
           <img
-            id="image-closed" src={Close_Icon} className="popup__close-icon" alt="крестик для закрытия диалогового окна"
+            id="image-closed" src={closeIcon} className="popup__close-icon" alt="крестик для закрытия диалогового окна"
           />
         </button>
         <img src={props.card.cardInfo.link} className="popup__image" alt="Изображение в карточке" />
