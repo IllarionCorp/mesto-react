@@ -77,7 +77,7 @@ function App() {
   function handleCardDelete(card) {
     api
       .deleteCard(card._id)
-      .then(setCards((list) => list.filter((c) => c._id !== card._id && c)))
+      .then(() => setCards((list) => list.filter((c) => c._id !== card._id && c)))
       .catch((err) => alert("Смэрт удаления карточки: " + err));
   }
 
