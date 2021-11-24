@@ -1,6 +1,6 @@
 import React from "react";
-import { CurrentUserContext } from "../cotexts/CurrentUserContext";
-import Trash from '../images/Trash.svg';
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import trash from '../images/Trash.svg';
 
 
 export default function Card(props) {
@@ -29,20 +29,18 @@ export default function Card(props) {
   }
 
   return (
-    <>
-      <div className="element">
-        <img src={props.card.link} className="element__image" alt="Пользовательское изображение" onClick={handleClick} />
-        <button id="" type="button" className={cardDeleteButtonClassName} onClick={handleDeleteClick}>
-          <img src={Trash} className="element__trash-image" alt="Иконка для удаления карточки" />
-        </button>
-        <div className="element__footer">
-          <h2 className="element__place-name">{props.card.name}</h2>
-          <div className="element__like-container">
-            <button type="button" className={cardLikeButtonClassName} onClick={handleLikeClick}></button>
-            <p className="element__like-counter">{props.card.likes.length}</p>
-          </div>
+    <div className="element">
+      <img src={props.card.link} className="element__image" alt="Пользовательское изображение" onClick={handleClick} />
+      <button type="button" className={cardDeleteButtonClassName} onClick={handleDeleteClick}>
+        <img src={trash} className="element__trash-image" alt="Иконка для удаления карточки" />
+      </button>
+      <div className="element__footer">
+        <h2 className="element__place-name">{props.card.name}</h2>
+        <div className="element__like-container">
+          <button type="button" className={cardLikeButtonClassName} onClick={handleLikeClick}></button>
+          <p className="element__like-counter">{props.card.likes.length}</p>
         </div>
       </div>
-    </>
+    </div>
   );
 }

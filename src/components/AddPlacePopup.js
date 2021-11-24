@@ -22,11 +22,16 @@ export default function AddPlacePopup(props) {
     });
   }
 
+  React.useEffect(() => {
+    setName('');
+    setLink('');
+  }, [props.isOpen]);
+
   return (
     <PopupWithForm id="#add" name="Новое место" isOpen={props.isOpen} onClose={props.onClose} onSubmit={handleSubmit}>
-      <input name="title" type="text" id="title" className="fields__input" placeholder="Название" minLength="2" maxLength="30" required onChange={handleNameChange} />
+      <input name="title" type="text" id="title" className="fields__input" placeholder="Название" minLength="2" maxLength="30" required value={name} onChange={handleNameChange} />
       <span id="title-error" className="fields__input-error"></span>
-      <input name="link" type="url" id="link" className="fields__input" required placeholder="Ссылка на картинку" onChange={handleLinkChange} />
+      <input name="link" type="url" id="link" className="fields__input" required placeholder="Ссылка на картинку" value={link} onChange={handleLinkChange} />
       <span id="link-error" className="fields__input-error"></span>
     </PopupWithForm>
   );
