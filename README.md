@@ -5,7 +5,6 @@
 ## Технологии
 - React
 - JSX
-- Webpack
 - REST API
 - Git
 
